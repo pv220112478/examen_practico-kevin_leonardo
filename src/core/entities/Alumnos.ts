@@ -1,3 +1,4 @@
+//alumnos
 export interface AlumnoProps {
     id: string;
     nombre: string;
