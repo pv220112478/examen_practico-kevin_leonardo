@@ -1,29 +1,24 @@
 //main
-import { AgregarMonedero } from "../src/core/use_case/nuevomonedero";
+import { AgregarMonedero } from "../src/core/use_case/nuevomonedero"
 import { MockMonederoRepository } from "../src/infraestructure/repositories/MockMonederoRepository";
 
-async function ejecutarPrueba() {
-    console.log("--- Iniciando Sistema Tec-Café ---");
-
+async function ejecutar() {
     const repo = new MockMonederoRepository();
+    const useCase = new AgregarMonedero(repo);
 
-    const casoDeUso = new AgregarMonedero(repo);
+    const datos = { idAlumno: "ALU-2024", montoInicial: 100 };
 
     try {
-        console.log("Intentando crear monedero...");
+        console.log("--- Intento 1 ---");
+        await useCase.ejecutar(datos);
+        console.log("Primer monedero creado con éxito.");
 
-        const resultado = await casoDeUso.ejecutar({
-            idAlumno: "ALU-2024",
-            montoInicial: 150
-        });
-
-        console.log("Monedero creado con éxito!");
-        console.log(`ID Alumno: ${resultado.getIdAlumno()}`);
-        console.log(`Saldo inicial: $${resultado.saldoActual}`);
-
+        console.log("--- Intento 2 (Mismo ID) ---");
+        await useCase.ejecutar(datos); 
+        
     } catch (error: any) {
-        console.error("Error en el proceso:", error.message);
+        console.error("ERROR CAPTURADO:", error.message);
     }
 }
 
-ejecutarPrueba();
+ejecutar();
