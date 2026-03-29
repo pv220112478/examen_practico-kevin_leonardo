@@ -1,3 +1,4 @@
+//test monedero
 import { Monedero } from "../core/entities/Monedero";
 
 //objeto necesario para llamar a las funciones que se van a probar
