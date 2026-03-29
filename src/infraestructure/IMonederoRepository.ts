@@ -1,3 +1,4 @@
+//imonederorepository
 import { Monedero } from "../core/entities/Monedero";
 
 export interface IMonederoRepository {
