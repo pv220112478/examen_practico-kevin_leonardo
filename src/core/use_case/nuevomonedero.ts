@@ -1,3 +1,4 @@
+//caso de uso
 import { Monedero } from "../entities/Monedero";
 import { IMonederoRepository } from "../../infraestructure/IMonederoRepository";
 
