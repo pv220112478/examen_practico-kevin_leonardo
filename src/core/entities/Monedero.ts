@@ -1,3 +1,4 @@
+//monedero
 export interface MonederoProps {
     idAlumno: string;
     saldo: number;
