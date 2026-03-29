@@ -1,3 +1,4 @@
+//mockmonederorepository
 import { IMonederoRepository } from "../IMonederoRepository";
 import { Monedero } from "../../core/entities/Monedero"; 
 
