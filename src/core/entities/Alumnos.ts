@@ -1,17 +1,10 @@
 //alumnos
-export interface AlumnoProps {
-    id: string;
-    nombre: string;
-}
-
 export class Alumno {
-    constructor(private props: AlumnoProps) {}
+    public idAlumno: string;
+    public nombre: string;
 
-    get id(): string {
-        return this.props.id;
-    }
-
-    get nombre(): string {
-        return this.props.nombre;
+    constructor(datos: { idAlumno: string; nombre: string }) {
+        this.idAlumno = datos.idAlumno;
+        this.nombre = datos.nombre;
     }
 }
