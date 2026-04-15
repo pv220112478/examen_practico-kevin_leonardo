@@ -5,23 +5,24 @@ export interface MonederoProps {
 }
 
 export class Monedero {
-    constructor(private props: MonederoProps) {}
+    private idAlumno: string;
+    private saldo: number;
 
+    constructor(props: MonederoProps) {
+        this.idAlumno = props.idAlumno;
+        this.saldo = props.saldo;
+    }
+
+    public getIdAlumno(): string {
+        return this.idAlumno;
+    }
+
+    public getSaldo(): number {
+        return this.saldo;
+    }
+
+    // El método que tus tests están llamando
     public validarMontoRecarga(monto: number): boolean {
         return monto >= 50 && monto <= 500;
-    }
-
-    public sumarSaldo(monto: number): void {
-        if (!this.validarMontoRecarga(monto)) {
-            throw new Error("Monto de recarga inválido para las reglas del Tec-Café");
-        }
-        this.props.saldo += monto;
-    }
-
-    get saldoActual() {
-        return this.props.saldo;
-    }
-    getIdAlumno(): string{
-        return this.props.idAlumno
     }
 }
