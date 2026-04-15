@@ -6,8 +6,8 @@ async function ejecutar() {
     const repo = new MockMonederoRepository();
     const useCase = new AgregarMonedero(repo);
 
-    const datos = { idAlumno: "ALU-2024", montoInicial: 100 };
-    const datos2 = { idAlumno: "ALU-2023", montoInicial: 100 };
+    const datos = { idAlumno: "ALU-2024", monto: 100 };
+    const datos2 = { idAlumno: "ALU-2023", monto: 100 };
 
     try {
     console.log("--- Intento 1 ---");
