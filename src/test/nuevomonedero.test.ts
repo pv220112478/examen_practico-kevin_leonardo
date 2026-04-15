@@ -14,12 +14,10 @@ describe("Caso de Uso: AgregarMonedero", () => {
     const input = { idAlumno: "compi", montoInicial: 200 };
     const resultado = await useCase.ejecutar(input);
 
-    // Si usas Getters
     expect(resultado.getIdAlumno()).toBe("compi");
     
     const guardado = await mockRepo.buscarPorId("compi");
     
-    // El "Type Guard" para que TS no llore por el posible 'null'
     if (!guardado) {
         throw new Error("El monedero debería existir");
     }
