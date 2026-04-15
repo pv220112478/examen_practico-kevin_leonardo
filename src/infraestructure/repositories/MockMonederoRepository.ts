@@ -10,6 +10,9 @@ export class MockMonederoRepository implements IMonederoRepository {
     }
 
     async guardar(monedero: Monedero): Promise<void> {
+    if (MockMonederoRepository.monederos.has(monedero.getIdAlumno())) {
+        throw new Error("ya existe el monedero");
+    }
     MockMonederoRepository.monederos.set(monedero.getIdAlumno(), monedero);
 }
 
