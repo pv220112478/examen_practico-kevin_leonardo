@@ -14,8 +14,10 @@ describe("Caso de Uso: AgregarMonedero", () => {
     const input = { idAlumno: "compi", montoInicial: 200 };
     const resultado = await useCase.ejecutar(input);
 
+    //revisa si esta bien escrito el id alumno para luego poder buscarlo
     expect(resultado.getIdAlumno()).toBe("compi");
     
+    //busca el idalumno para buscar el compi y si es igual no deberia dar problema
     const guardado = await mockRepo.buscarPorId("compi");
     
     if (!guardado) {
