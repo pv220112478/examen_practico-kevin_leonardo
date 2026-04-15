@@ -11,7 +11,7 @@ describe("Caso de Uso: AgregarMonedero", () => {
     });
 
     test("Debe crear y guardar un monedero cuando los datos son válidos", async () => {
-    const input = { idAlumno: "compi", montoInicial: 200 };
+    const input = { idAlumno: "compi", monto: 200 };
     const resultado = await useCase.ejecutar(input);
 
     //revisa si esta bien escrito el id alumno para luego poder buscarlo
