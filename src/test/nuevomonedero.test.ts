@@ -1,4 +1,4 @@
-import { Alumnos} from "../core/entities/Alumnos.js"
+import { Alumnos} from "../core/entities/Alumnos"
 import { AgregarMonedero } from "../core/use_case/nuevomonedero";
 import { MockMonederoRepository } from "../infraestructure/repositories/MockMonederoRepository";
 
@@ -11,25 +11,21 @@ describe("Caso de Uso: AgregarMonedero", () => {
         mockRepo = new MockMonederoRepository();
         useCase = new AgregarMonedero(mockRepo);
         alumno = new Alumnos({idAlumno: "compi", nombre: "kevin"})
-        
-
-
     });
 
     test("Debe crear y guardar un monedero cuando los datos son válidos", async () => {
     const input = { idAlumno: "compi", monto: 200 };
     const resultado = await useCase.ejecutar(input);
 
-    //revisa si esta bien escrito el id alumno para luego poder buscarlo
-    expect(resultado.getIdAlumno()).toBe("compi");
+    expect(resultado.getIdAlumno()).toBe(alumno.getIdAlumno());
     
-    //busca el idalumno para buscar el compi y si es igual no deberia dar problema
-    const guardado = await mockRepo.buscarPorId("compi");
+    const guardado = await mockRepo.buscarPorId(alumno.getIdAlumno());
     
-    if (!guardado) {
-        throw new Error("El monedero debería existir");
-    }
+    expect(guardado).toBeDefined();
 
-    expect(guardado.getSaldo()).toBe(200);
+    if (guardado) {
+        expect(guardado.getSaldo()).toBe(200);
+        expect(guardado.getIdAlumno()).toBe(alumno.getIdAlumno());
+    }
 });
 });

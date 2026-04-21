@@ -5,23 +5,14 @@ export interface MonederoProps {
 }
 
 export class Monedero {
-    private idAlumno: string;
-    private saldo: number;
-
-    constructor(props: MonederoProps) {
-        this.idAlumno = props.idAlumno;
-        this.saldo = props.saldo;
-    }
-
+    constructor(private props: MonederoProps) {}
     public getIdAlumno(): string {
-        return this.idAlumno;
+        return this.props.idAlumno;
     }
-
     public getSaldo(): number {
-        return this.saldo;
+        return this.props.saldo;
     }
 
-    // El método que tus tests están llamando
     public validarMontoRecarga(monto: number): boolean {
         return monto >= 50 && monto <= 500;
     }
